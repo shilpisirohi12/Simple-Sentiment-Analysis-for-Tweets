@@ -1,7 +1,12 @@
-# Simple-Sentiment-Analysis-for-Tweets
+# Simple Sentiment Analysis for Tweets
+
+**This project is only for learning purpose. It doesn't have any intentions to choose the side. This analysis is based on the recent 4k tweets collected on July 10,2020. The sentiments might be different if data of any other date or time will be used**
 
 ## Introduction
-This is the python code to analyse the tweets for Donald Trump and Joe Biden. How many of the tweets in which they are mentioned are positive and negative.
+As elections in US is upon us. I thought to analyse the sentiments people are showing for both the Presidential canditates on twitter.  
+This is the python code to analyse the tweets contains keyword Donald Trump or/and Joe Biden. It will show how many of the tweets in which they are mentioned have positive and negative polarity.
+
+
 
 ## Fetching Tweets
 To fetch the data from tweet, you need to create a developers account and then you need to create an app. Then you will get the values for the variables access_token, access_token_secret, api_key and api_secret_key. For detailed information, refer this https://medium.com/@jayeshsrivastava470/how-to-extract-tweets-from-twitter-in-python-47dd07f4e8e7
@@ -156,6 +161,7 @@ ani = FuncAnimation(plt.gcf(),animate,interval=100)
 ```
 Here the final plot
 ![Sentiment Analysis](https://github.com/shilpisirohi12/Simple-Sentiment-Analysis-for-Tweets/blob/master/plot.PNG)
+
 This shows that though in realtime, there are less tweets related to Joe Biden posted on twitter. But they are more positive.
 
 Please refer the complete notebook for the code.
