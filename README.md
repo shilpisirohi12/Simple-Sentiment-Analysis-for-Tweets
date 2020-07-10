@@ -32,7 +32,7 @@ tweet_stream = Stream(auth, Listener())
 tweet_stream.filter(track=['Trump', 'Biden'])
   ```
 ## Custom Exception
-As this is a mini project, I want to fetch around 2k tweets. To implement this condition, I write my custom Exceptions.
+As this is a mini project, I want to fetch around 4k tweets. To implement this condition, I write my custom Exceptions.
 ```python
 class Error(Exception):
   """Base class for other exceptions"""
@@ -43,10 +43,10 @@ class SufficientTweetsCollected(Error):
 ```
 
 ## Processing the Tweets
-We are getting the stream of the tweets. To handle that we need to create a Listener class where we will write our logic to pre-process the tweets adn save the analysis into the file.
+We are getting the stream of the tweets. To handle that we need to create a Listener class where we will write our logic to pre-process the tweets and save the analysis into the file.
 We need to override two methods of Listener class - on_data() and on_error()
 ### on_data() function
-This function is responsible to fetch the tweets one by one. There are lots of data in a tweet like datetime, id, location, tweet text, likes, retweets etc. As we only interested in text. So we will extract that data. Each tweet will be pre-processed. Converted into Blob which contains all the sentences. Then sentiment polarity of each sentence is calculated.
+This function is responsible to fetch the tweets one by one. There are lots of data in a tweet like datetime, id, location, tweet text, likes, retweets etc. As we are only interested in text. So we will extract that data. Each tweet will be pre-processed. Converted into Blob which contains all the sentences. Then sentiment polarity of each sentence is calculated.
 
 **Fetching Tweet text**
 ```python
@@ -76,10 +76,10 @@ for sentence in blob.sentences:
 **Complete Code explaination of the method on_data()**
 
 The code is in try and catch block to handle three types of exception primarily( AttributeError,KeyError,NameError) which is thrown while fetching tweets.
-First, code will check if the tweet is related to Donald Trump or Joe Biden. Then, the sentiment of each tweet is calculated by adding their polarity score and store in variable (trump_sentiment/biden_sentiment). That value will be added to the global variable(trump/biden) which will have the consolidated polarity score of the tweets.
+First, code will check if the tweet is related to Donald Trump or Joe Biden. Then, the sentiment of each tweet is calculated by adding their polarity score and store in variable (trump_sentiment/biden_sentiment). That value will be added to the global variable(trump/biden) which will have the consolidated polarity score of all the tweets in our dataset.
 We are saving the polarity score in the csv file. The data of the csv file will be used to plot graph.
 
-Also, we are counting tweets for each canditate. When both the canditates has atleast 2k tweets then code will throw an exception and the streaming will stop.
+Also, we are counting tweets for each canditate. When both the canditates has atleast 2k tweets then code will throw an exception and the streaming of tweets will stop.
 ```python
   def on_data(self, data):
     raw_tweets = json.loads(data)
@@ -128,7 +128,7 @@ Also, we are counting tweets for each canditate. When both the canditates has at
    ```
 
 ## Plotting graph
-The code is for realtime plotting of the graphs. If we keep on fetching tweets in background and adding new data in the csv file then the graph will keep on changing. 
+Below code is for realtime plotting of the graphs. If we keep on fetching tweets in background and adding new data in the csv file then the graph will keep on changing. 
 ```python
 import pandas as pd
 import matplotlib.pyplot as plt
