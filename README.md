@@ -154,3 +154,8 @@ def animate(i):
 ani = FuncAnimation(plt.gcf(),animate,interval=100)
 
 ```
+Here the final plot
+![Sentiment Analysis](https://github.com/shilpisirohi12/Simple-Sentiment-Analysis-for-Tweets/blob/master/plot.PNG)
+This shows that though in realtime, there are less tweets related to Joe Biden posted on twitter. But they are more positive.
+
+Please refer the complete notebook for the code.
